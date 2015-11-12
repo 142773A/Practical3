@@ -8,10 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head><title>Duke's Bookstore</title></head>
-<%@ page import="demo.*" %>
+<%@ page import="model.*" %>
 <%@ page import="java.util.List" %>
 <%
-  List<BookDetails> list =( List<BookDetails>)request.getAttribute("booklist");
+  List<BooksEntity> list =( List<BooksEntity>)request.getAttribute("books");
 %>
 
 <body bgcolor="#ffffff">
@@ -29,12 +29,12 @@
   <table summary="layout">
 
     <%
-      for (BookDetails book : list) {
+      for (BooksEntity book : list) {
     %>
     <tr>
-      <td bgcolor="#ffffaa"><a href="/bookdetails?bookId=<%= book.getBookId() %>"> <strong><%= book.getTitle()%></strong></a></td>
+      <td bgcolor="#ffffaa"><a href="/bookdetails?bookId=<%= book.getId() %>"> <strong><%= book.getTitle()%></strong></a></td>
       <td bgcolor="#ffffaa" rowspan=2><%= book.getPrice() %></td>
-      <td bgcolor="#ffffaa" rowspan=2><a href="/bookcatalog?bookId=<%= book.getBookId() %>"> Add to Cart </a></td>
+      <td bgcolor="#ffffaa" rowspan=2><a href="/bookcatalog?bookId=<%= book.getId() %>"> Add to Cart </a></td>
     </tr>
 
     <tr>
